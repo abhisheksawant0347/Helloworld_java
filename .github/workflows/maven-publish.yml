@@ -1,9 +1,11 @@
 
-name: Maven Package
+name: Maven Package test for branch
 
 on:
  push:
-    branches: [ "master" ]
+    branches:  
+     - master
+     - dev
 
 jobs:
   build:
