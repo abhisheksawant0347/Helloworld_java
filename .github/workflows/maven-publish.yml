@@ -1,5 +1,5 @@
 
-name: Maven Package test for branch
+name: Maven Package for dev branch
 
 on:
  push:
