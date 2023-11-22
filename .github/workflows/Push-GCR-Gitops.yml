@@ -120,7 +120,7 @@ jobs:
               ls -la
               cat deployment.yml
               cd
-              rm -rf Hellworld_java      
+              rm -rf Helloworld_java      
  
             
 
