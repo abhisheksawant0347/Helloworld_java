@@ -102,9 +102,10 @@ jobs:
       runs-on: ubuntu-latest 
       needs: Deploy
       steps:
-      - name: Update docker image 
+      - name: Update docker image
+      - uses: actions/checkout@v3
+      - name: update and push the changes
         run: |-
-            ls -la
             git clone https://github.com/abhisheksawant0347/Helloworld_java.git
             cd Helloworld_java
             ls -la
@@ -116,7 +117,8 @@ jobs:
             git add deployment.yml
             git commit -m "Updated yml file"
             git remote -v
-            git push origin master
+            git status
+            git push 
             ls -la
             cat deployment.yml
             cd
