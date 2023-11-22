@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: my-application
-        image: ${{ secrets.gcr_repo }}/gitops:latest
+        image: ${{ secrets.gcr_repo }}/gitops6:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080 
