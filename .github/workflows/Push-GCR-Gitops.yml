@@ -102,25 +102,21 @@ jobs:
       runs-on: ubuntu-latest 
       needs: Deploy
       steps:
-        - uses: actions/checkout@v3
-        - run: |-
+        - name: Update manifest file and push to repo
+          run: |-
               git clone https://github.com/abhisheksawant0347/Helloworld_java.git
               cd Helloworld_java
               ls -la
-              cd sample
-              sed -re 's/gitops7:latest/${{github.event.inputs.DockerImageName}}:${{github.event.inputs.tag}}/g' deployment.yml
+              cd sample && sed -re 's/gitops7:latest/${{github.event.inputs.DockerImageName}}:${{github.event.inputs.tag}}/g' deployment.yml
               cat deployment.yml
               git config --global user.email "abhisheksawant0347@gmail.com"
               git config --global user.name "abhisheksawant0347"
               git add deployment.yml
               git commit -m "Updated deployment.yml file"
-              git remote -v
-              git status
               git push https://abhisheksawant0347:${{ secrets.TOKEN_GITHUB }}@github.com/abhisheksawant0347/Helloworld_java.git
-              ls -la
-              cat deployment.yml
               cd
-              rm -rf Helloworld_java      
+              rm -rf Helloworld_java  
+              ls -la
  
             
 
