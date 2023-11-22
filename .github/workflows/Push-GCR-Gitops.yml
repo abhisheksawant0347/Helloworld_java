@@ -113,9 +113,11 @@ jobs:
                ls -la
                git config --global user.email "abhisheksawant0347@gmail.com"
                git config --global user.name "abhisheksawant0347"
-               git add deployment.yml
+               cat deployment.yml > deployment1.yml
+               git add deployment1.yml
                git commit -m "Updated deployment.yml file"
                ls -la
+               cat deployment.yml
                git push https://abhisheksawant0347:${{ secrets.TOKEN_GITHUB }}@github.com/abhisheksawant0347/Helloworld_java.git
                cd
                rm -rf Helloworld_java  
