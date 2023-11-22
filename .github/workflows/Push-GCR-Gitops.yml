@@ -109,7 +109,7 @@ jobs:
                cd Helloworld_java
                ls -la
                cd sample
-               varibale1='grep -o gitops: deployment.yml 
+               varibale1='grep -o gitops deployment.yml' 
                sed -i 's/$variable1/gitops:${{github.event.inputs.tag}}/g' deployment.yml
                cat deployment.yml
                git config --global user.email "abhisheksawant0347@gmail.com"
