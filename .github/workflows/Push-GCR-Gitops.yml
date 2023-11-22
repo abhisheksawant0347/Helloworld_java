@@ -103,24 +103,27 @@ jobs:
       needs: Deploy
       steps:
         - uses: actions/checkout@v3
+        - name: set env. variable
+          env: 
+            USER: abhisheksawant0347
+            TOKEN: ${{ secrect.TOKEN_GITHUB }}
         - run: |-
-             git clone https://github.com/abhisheksawant0347/Helloworld_java.git
-             cd Helloworld_java
-             ls -la
-             cd sample
-             sed -i 's/gitops:latest/${{github.event.inputs.DockerImageName}}:${{github.event.inputs.tag}}/g' deployment.yml
-             cat deployment.yml
-             git config --global user.email "abhisheksawant0347@gmail.com"
-             git config --global user.name "abhisheksawant0347"
-             git add deployment.yml
-             git commit -m "Updated yml file"
-             git remote -v
-             git status
-             git push 
-             ls -la
-             cat deployment.yml
-             cd
-             rm -rf Hellworld_java     
+              git clone https://github.com/abhisheksawant0347/Helloworld_java.git
+              cd Helloworld_java
+              ls -la
+              cd sample
+              sed -i 's/gitops:latest/${{github.event.inputs.DockerImageName}}:${{github.event.inputs.tag}}/g' deployment.yml
+              cat deployment.yml
+              git remote set-url origin https://$USER:$TOKEN@github.com/$USER/Helloworld_java.git
+              git add deployment.yml
+              git commit -m "Updated yml file"
+              git remote -v
+              git status
+              git push 
+              ls -la
+              cat deployment.yml
+              cd
+              rm -rf Hellworld_java      
  
             
 
