@@ -103,10 +103,6 @@ jobs:
       needs: Deploy
       steps:
         - uses: actions/checkout@v3
-        - name: set env. variable
-          env: 
-            USER: abhisheksawant0347
-            TOKEN: ${{ secrect.TOKEN_GITHUB }}
         - run: |-
               git clone https://github.com/abhisheksawant0347/Helloworld_java.git
               cd Helloworld_java
