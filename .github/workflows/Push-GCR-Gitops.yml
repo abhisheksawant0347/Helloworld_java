@@ -104,13 +104,11 @@ jobs:
       steps:
         - name: Update manifest file and push to repo
           run: |-
-               
                git clone https://github.com/abhisheksawant0347/Helloworld_java.git
                cd Helloworld_java
                ls -la
                cd sample
-               varibale1='grep -o gitops deployment.yml' 
-               sed -i 's/$variable1/gitops:${{github.event.inputs.tag}}/g' deployment.yml
+               sed -re 's/gitops:latest/gitops:${{github.event.inputs.tag}}/g' deployment.yml
                cat deployment.yml
                git config --global user.email "abhisheksawant0347@gmail.com"
                git config --global user.name "abhisheksawant0347"
