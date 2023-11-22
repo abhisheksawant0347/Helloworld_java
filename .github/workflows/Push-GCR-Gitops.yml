@@ -107,7 +107,7 @@ jobs:
               git clone https://github.com/abhisheksawant0347/Helloworld_java.git
               cd Helloworld_java
               ls -la
-              cd sample && sed -re 's/gitops7:latest/${{github.event.inputs.DockerImageName}}:${{github.event.inputs.tag}}/g' deployment.yml
+              cd sample && sed -ire 's/gitops7:latest/${{github.event.inputs.DockerImageName}}:${{github.event.inputs.tag}}/g' deployment.yml
               cat deployment.yml
            
  
