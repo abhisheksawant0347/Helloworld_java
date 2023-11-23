@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: my-application
-        image: gcr.io/alert-outlet-402706/gitops:3.0
+        image: gcr.io/alert-outlet-402706/gitops:4.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080 
