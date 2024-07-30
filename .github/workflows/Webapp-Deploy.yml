@@ -35,7 +35,9 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
     - run: |
+        
         docker build . -t myrepo1.azurecr.io/java-webapp:${{ github.sha }}
+        docker images
         docker push myrepo1.azurecr.io/java-webapp:${{ github.sha }} 
 
     - uses: azure/webapps-deploy@v2
