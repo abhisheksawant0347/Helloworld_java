@@ -10,14 +10,14 @@ jobs:
     - name: 'Checkout Github Action'
       uses: actions/checkout@master
 
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+   # - name: 'Login via Azure CLI'
+   #   uses: azure/login@v1
+   #   with:
+   #     creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - uses: azure/docker-login@v1
       with:
-        login-server: contoso.azurecr.io
+        login-server: myrepo1.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -27,5 +27,5 @@ jobs:
 
     - uses: azure/webapps-deploy@v2
       with:
-        app-name: 'Java-webapp'
+        app-name: 'myjava-webapp1'
         images: 'myrepo1.azurecr.io/java-webapp:${{ github.sha }}'
