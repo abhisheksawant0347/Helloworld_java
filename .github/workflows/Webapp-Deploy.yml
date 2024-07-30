@@ -1,0 +1,31 @@
+on: [push]
+
+name: Linux_Container Java applicaton
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # checkout the repo
+    - name: 'Checkout Github Action'
+      uses: actions/checkout@master
+
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: contoso.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - run: |
+        docker build . -t myrepo1.azurecr.io/java-webapp:${{ github.sha }}
+        docker push myrepo1.azurecr.io/java-webapp:${{ github.sha }} 
+
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'Java-webapp'
+        images: 'myrepo1.azurecr.io/java-webapp:${{ github.sha }}'
